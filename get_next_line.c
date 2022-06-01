@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/05/18 00:07:16 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:06:12 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *get_next_line(int fd)
 	static	int	number_line;
 	char	buff[BUFFER_SIZE + 1];
 
-	number_line = 0;
+	number_line++;
 	size = read(fd, buff, BUFFER_SIZE);
 
 	return (get_new_line_str(buff, number_line));

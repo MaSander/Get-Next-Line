@@ -6,14 +6,16 @@
 int main()
 {
     int fd;
-    char *str;
 
     fd = open("teste", O_RDONLY);
 
-    str = get_next_line(fd);
-
-    printf("\n%s\n", str);
+    printf("\n%s\n", get_next_line(fd));
     
+    
+    printf("\n%s\n", get_next_line(fd));
+
+    printf("\n%s\n", get_next_line(fd));
+
     close(fd);
 
     return (0);
