@@ -6,46 +6,11 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/01 12:07:32 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/02 13:59:52 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-
-size_t	get_lines_count(char *buff)
-{
-	size_t	len;
-
-	len = 1;
-	while(*buff)
-	{
-		if(*buff == '\n')
-			len++;
-		buff++;
-	}
-
-	return (len);
-}
-
-char	*str_new_line(char *buff)
-{
-	size_t	line_len;
-	char	*str;
-
-	line_len = 1;
-	while(*buff != '\n')
-	{
-		line_len++;
-		buff++;
-	}
-
-	str = malloc(line_len);
-	while (line_len-- > 0)
-		str[line_len] = *buff--;
-
-	return (str);
-}
+#include "get_next_line.h"
 
 int	ft_isascii(int c)
 {
@@ -54,23 +19,42 @@ int	ft_isascii(int c)
 	return (1);
 }
 
-char	*get_new_line_str(char *buff, size_t number_line)
+
+size_t	ft_strlen(const char *c)
 {
-	char	**pointer_line;
-	char	*newstr;
-	size_t	line_number;
+	size_t	lengh;
 
-	pointer_line = malloc(get_lines_count(buff));
-	pointer_line[0] = buff;
-	line_number = 1;
-	while(ft_isascii(*buff) && (line_number < number_line))
+	lengh = 0;
+	if(!c)
+		return (0);
+	while (*c)
 	{
-		if(*buff == '\n')
-		{
-			pointer_line[line_number++] = (buff);
-		}
-		buff++;
+		lengh++;
+		c++;
 	}
+	return (lengh);
+}
 
-	return (str_new_line(pointer_line[number_line]));
+char	*ft_have_complete_line(char *buff)
+{
+	while(*buff || *buff == '\n')
+		return (buff);
+	return (0);	
+}
+
+char	*ft_return_line(char *buff)
+{
+	char	*new_line;
+	int		len;
+	
+	len = 0;
+	while(buff[len])
+		len++;
+	if(buff[len+1] == '\n')
+		len++;
+	new_line = malloc(len);
+	while (len--)
+		new_line[len] = buff[len];
+
+	return (new_line);
 }
