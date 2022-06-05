@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/02 14:06:57 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/06 00:20:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 char	*ft_concat_buff(char *buff, char *str,int strlen)
 {
-	int		count;
+	int		str_i;
+	int		buff_i;
 	char	*concat;
 
-	concat = malloc(BUFFER_SIZE + strlen);
-	count = 0;
-	while (strlen > count++)
-		concat[count] = str[count];
-	count = 0;
-	while ((strlen + BUFFER_SIZE > count) || buff[count])
+	str_i = 0;
+	buff_i = 0;
+	concat = malloc(strlen + BUFFER_SIZE);
+	while (str[str_i])
 	{
-		concat[strlen + count] = buff[count];
-		count++;
+		concat[str_i] = str[str_i];
+		str_i++;
+	}
+	while ((strlen > str_i) || buff[buff_i])
+	{
+		concat[str_i] = buff[buff_i];
+		str_i++;
+		buff_i++;
 	}
 	
 	return (concat);
@@ -63,15 +68,20 @@ char *get_next_line(int fd)
 	next_line = 0;
 	size = 0;
 
-	while (next_line == 0)
+	while (!ft_str_have_newline(str))
 	{
 		buff = malloc(BUFFER_SIZE);
 	
-		size =+ read(fd, buff, BUFFER_SIZE);
-		str = ft_concat_buff(buff, str, size);
-		next_line = ft_have_complete_line(str);
+		size += read(fd, buff, BUFFER_SIZE);
+		if(str)
+			str = ft_concat_buff(buff, str, size);
+		else
+			str = ft_strdup(buff, size);
 		free(buff);
 	}
-	
-	return ft_return_line(str);
+
+	next_line = ft_return_line(str);
+	str = ft_get_end_line(str);
+
+	return (next_line);
 }
