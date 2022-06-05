@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/02 13:59:52 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/06 00:08:30 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,18 @@ size_t	ft_strlen(const char *c)
 	return (lengh);
 }
 
-char	*ft_have_complete_line(char *buff)
+char	*ft_get_end_line(char *buff)
 {
-	while(*buff || *buff == '\n')
-		return (buff);
+	int	i;
+
+	i = 0;
+	while(buff[i])
+	{
+		//retornar se passou por \n ou \0
+		if(buff[i] == '\n')
+			return (buff + i + 1);	
+		i++;
+	}
 	return (0);	
 }
 
@@ -48,13 +56,35 @@ char	*ft_return_line(char *buff)
 	int		len;
 	
 	len = 0;
-	while(buff[len])
-		len++;
-	if(buff[len+1] == '\n')
-		len++;
+	while(buff[len] && buff[len - 1] != '\n')
+			len++;
 	new_line = malloc(len);
 	while (len--)
 		new_line[len] = buff[len];
 
 	return (new_line);
+}
+
+char    *ft_strdup(char *str, int size)
+{
+	char	*newstr;
+	newstr = malloc(size);
+
+	while (--size >= 0)
+		newstr[size] = str[size];
+
+	return (newstr);
+}
+
+int	ft_str_have_newline(char *str)
+{
+	if(!str)
+		return (0);
+	while(*str)
+	{
+		if(*str == '\n')
+			return(1);
+		str++;
+	}
+	return (0);
 }
