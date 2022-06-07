@@ -6,7 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/06/06 20:40:16 by coder            ###   ########.fr       */
+=======
+/*   Updated: 2022/06/06 00:08:30 by coder            ###   ########.fr       */
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +46,10 @@ char	*ft_get_end_line(char *buff)
 	i = 0;
 	while(buff[i])
 	{
+<<<<<<< HEAD
+=======
+		//retornar se passou por \n ou \0
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973
 		if(buff[i] == '\n')
 			return (buff + i + 1);	
 		i++;
@@ -55,7 +63,11 @@ char	*ft_return_line(char *str)
 	int		len;
 	
 	len = 0;
+<<<<<<< HEAD
 	while(str[len] && str[len - 1] != '\n')
+=======
+	while(buff[len] && buff[len - 1] != '\n')
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973
 			len++;
 	new_line = malloc(len);
 	while (len--)
@@ -81,9 +93,17 @@ int	ft_str_have_newline(char *str)
 		return (0);
 	while(*str)
 	{
+<<<<<<< HEAD
 		if(*str == '\n' || *str == '\0')
+=======
+		if(*str == '\n')
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973
 			return(1);
 		str++;
 	}
 	return (0);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973

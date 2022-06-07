@@ -6,7 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/06/06 19:35:44 by coder            ###   ########.fr       */
+=======
+/*   Updated: 2022/06/06 00:20:58 by coder            ###   ########.fr       */
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +72,7 @@ char *get_next_line(int fd)
 
 	next_line = 0;
 	size = 0;
+<<<<<<< HEAD
 	size_read = BUFFER_SIZE;
 	while (!ft_str_have_newline(str) && size_read == BUFFER_SIZE)
 	{
@@ -75,13 +80,28 @@ char *get_next_line(int fd)
 	
 		size_read = read(fd, buff, BUFFER_SIZE);
 		size += size_read;
+=======
+
+	while (!ft_str_have_newline(str))
+	{
+		buff = malloc(BUFFER_SIZE);
+	
+		size += read(fd, buff, BUFFER_SIZE);
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973
 		if(str)
 			str = ft_concat_buff(buff, str, size);
 		else
 			str = ft_strdup(buff, size);
 		free(buff);
 	}
+<<<<<<< HEAD
 	next_line = ft_return_line(str);
 	str = ft_get_end_line(str);
+=======
+
+	next_line = ft_return_line(str);
+	str = ft_get_end_line(str);
+
+>>>>>>> 5667e7a10460662e92ee0d2e2215bf3ff4875973
 	return (next_line);
 }
