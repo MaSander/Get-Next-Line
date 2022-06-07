@@ -9,15 +9,17 @@ int main()
 
     fd = open("teste", O_RDONLY);
 
-    int i = 10;
+    int i = 20;
     int line_count = 0;
+    char    *result_line;
 
     printf("\n\t ____START____\n");
 
     while(i--)
     {
-        printf("linha %i:\n", line_count++);
-        printf("%s\n", get_next_line(fd));
+//        printf("linha %i:", line_count++);
+        result_line = get_next_line(fd);
+        printf("%s", result_line);
     }
 
     printf("\n\t ____DONE____");

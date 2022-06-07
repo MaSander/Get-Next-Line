@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/05 23:42:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/06 19:35:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,27 +61,27 @@ char *get_next_line(int fd)
 */
 
 	ssize_t			size;
+	ssize_t			size_read;
 	char			*buff;
 	static	char	*str;
 	char			*next_line;
 
 	next_line = 0;
 	size = 0;
-
-	while (!ft_str_have_newline(str))
+	size_read = BUFFER_SIZE;
+	while (!ft_str_have_newline(str) && size_read == BUFFER_SIZE)
 	{
 		buff = malloc(BUFFER_SIZE);
 	
-		size += read(fd, buff, BUFFER_SIZE);
+		size_read = read(fd, buff, BUFFER_SIZE);
+		size += size_read;
 		if(str)
 			str = ft_concat_buff(buff, str, size);
 		else
 			str = ft_strdup(buff, size);
 		free(buff);
 	}
-
 	next_line = ft_return_line(str);
 	str = ft_get_end_line(str);
-
 	return (next_line);
 }

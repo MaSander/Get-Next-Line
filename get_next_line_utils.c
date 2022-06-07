@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/06 00:08:30 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/06 20:40:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	*ft_get_end_line(char *buff)
 	i = 0;
 	while(buff[i])
 	{
-		//retornar se passou por \n ou \0
 		if(buff[i] == '\n')
 			return (buff + i + 1);	
 		i++;
@@ -50,17 +49,17 @@ char	*ft_get_end_line(char *buff)
 	return (0);	
 }
 
-char	*ft_return_line(char *buff)
+char	*ft_return_line(char *str)
 {
 	char	*new_line;
 	int		len;
 	
 	len = 0;
-	while(buff[len] && buff[len - 1] != '\n')
+	while(str[len] && str[len - 1] != '\n')
 			len++;
 	new_line = malloc(len);
 	while (len--)
-		new_line[len] = buff[len];
+		new_line[len] = str[len];
 
 	return (new_line);
 }
@@ -82,7 +81,7 @@ int	ft_str_have_newline(char *str)
 		return (0);
 	while(*str)
 	{
-		if(*str == '\n')
+		if(*str == '\n' || *str == '\0')
 			return(1);
 		str++;
 	}
