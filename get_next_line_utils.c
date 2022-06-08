@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/07 00:09:01 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/08 13:22:48 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,12 @@ char	*ft_return_line(char *str)
 	char	*new_line;
 	int		len;
 	
-	len = 0;
-	while(str[len] && str[len - 1] != '\n')
+	len = 1;
+	while(*str == '\n')
+			str++;
+	while(str[len] && str[len] != '\n')
 			len++;
+	len++;
 	new_line = malloc(len);
 	while (len--)
 		new_line[len] = str[len];
