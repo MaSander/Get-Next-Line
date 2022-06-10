@@ -6,58 +6,94 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/08 13:29:26 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/10 01:17:12 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_concat_buff(char *buff, char *str, int strlen)
+///
+/// get a line
+///
+char	*ft_get_line(char *str)
 {
-	int		str_i;
-	int		buff_i;
-	char	*concat;
+	char	*new_line;
+	int		len;
 
-	str_i = 0;
-	buff_i = 0;
-	concat = malloc(strlen + BUFFER_SIZE);
-	while (str[str_i])
+	len = 1;
+	while (*str == '\n')
+		str++;
+	while (str[len] && str[len] != '\n')
+		len++;
+	len++;
+	new_line = malloc(len);
+	new_line[len] = '\0';
+	while (len--)
+		new_line[len] = str[len];
+	return (new_line);
+}
+
+///
+///read buff and concat with static str
+///
+char	*ft_read_buff(int fd, char *str, char *aux)
+{
+	int		read_size;
+	char	*buff;
+
+	buff = (char *)malloc(BUFFER_SIZE + 1);
+	read_size = 1;
+	while (read_size > 0)
 	{
-		concat[str_i] = str[str_i];
-		str_i++;
+		read_size = read(fd, buff, BUFFER_SIZE);
+		buff[read_size] = '\0';
+		aux = str;
+		str = ft_strjoin(aux, buff);
+		free(aux);
+
+		// if (aux == NULL)
+		// {
+		// 	if (ft_aux_alloc(&aux))
+		// 		return (NULL);
+		// }
+
+		if (ft_strnewline(str))
+			break;
 	}
-	while ((strlen > str_i) || buff[buff_i])
-	{
-		concat[str_i] = buff[buff_i];
-		str_i++;
-		buff_i++;
-	}
-	return (concat);
+	free(buff);
+	return (str);
+}
+
+///
+/// set at Line
+///
+char	*ft_get_end_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] != '\n' && str[i])
+		i++;
+	return (str + i + 1);
 }
 
 char	*get_next_line(int fd)
 {
-	ssize_t			size;
-	ssize_t			size_read;
-	char			*buff;
 	static char		*str;
-	char			*next_line;
+	char			*aux;
 
-	next_line = 0;
-	size = 0;
-	size_read = BUFFER_SIZE;
-	while (!ft_str_have_newline(str) && size_read == BUFFER_SIZE)
+	if(fd < 0)
+		return (NULL);
+	if(!str)
 	{
-		buff = malloc(BUFFER_SIZE);
-		size_read = read(fd, buff, BUFFER_SIZE);
-		size += size_read;
-		if (str)
-			str = ft_concat_buff(buff, str, size);
-		else
-			str = ft_strdup(buff, size);
-		free(buff);
+		str = (char *)malloc(1);
+		str[0] = '\0';
 	}
-	next_line = ft_return_line(str);
+
+	aux = NULL;
+	if(!ft_strnewline(str))
+		str = ft_read_buff(fd, str, aux);
+	aux = ft_get_line(str);
 	str = ft_get_end_line(str);
-	return (next_line);
+	return (aux);
 }

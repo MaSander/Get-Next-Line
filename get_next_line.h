@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 15:02:07 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/08 13:35:31 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:37:09 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
+char	*ft_get_line(char *str);
+char    *ft_read_buff(int fd, char *str, char *aux);
+char	*ft_get_end_line(char *str);
 size_t	ft_strlen(const char *c);
-char	*ft_get_end_line(char *buff);
-char	*ft_return_line(char *buff);
-char	*ft_strdup(char *str, int size);
-int		ft_str_have_newline(char *str);
+char	*ft_strnewline(const char *s);
+char	*ft_strjoin(char *str1, char *str2);
 
 #endif
