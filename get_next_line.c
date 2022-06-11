@@ -6,56 +6,65 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/10 01:17:12 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/11 00:00:07 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-///
-/// get a line
-///
 char	*ft_get_line(char *str)
 {
 	char	*new_line;
 	int		len;
 
-	len = 1;
-	while (*str == '\n')
-		str++;
-	while (str[len] && str[len] != '\n')
+	if(!*str)
+		return (NULL);
+	len = 0;
+	while (str[len] != '\0' && str[len] != '\n')
 		len++;
-	len++;
-	new_line = malloc(len);
-	new_line[len] = '\0';
+	new_line = malloc(len + 2);
+	if(str[len] == '\n')
+		new_line[len] = '\n';
+	else
+		new_line[len] = '\0';
+	new_line[len + 1] = '\0';
 	while (len--)
 		new_line[len] = str[len];
 	return (new_line);
 }
 
-///
-///read buff and concat with static str
-///
 char	*ft_read_buff(int fd, char *str, char *aux)
 {
 	int		read_size;
 	char	*buff;
 
 	buff = (char *)malloc(BUFFER_SIZE + 1);
+	if(!buff)
+		return (NULL);
 	read_size = 1;
 	while (read_size > 0)
 	{
 		read_size = read(fd, buff, BUFFER_SIZE);
-		buff[read_size] = '\0';
-		aux = str;
-		str = ft_strjoin(aux, buff);
-		free(aux);
+		if(read_size == -1)
+		{
+			free(buff);
+			return (NULL);
+		}
+		if(read_size == 0)
+			break;
 
-		// if (aux == NULL)
-		// {
-		// 	if (ft_aux_alloc(&aux))
-		// 		return (NULL);
-		// }
+		buff[read_size] = '\0';
+
+		aux = str;
+		if(aux == NULL)
+		{
+			aux = malloc(1);
+			aux[0] = '\0';
+		}
+
+		str = ft_strjoin(aux, buff);
+		
+		free(aux);
 
 		if (ft_strnewline(str))
 			break;
@@ -64,17 +73,19 @@ char	*ft_read_buff(int fd, char *str, char *aux)
 	return (str);
 }
 
-///
-/// set at Line
-///
-char	*ft_get_end_line(char *str)
+char	*ft_get_rest(char *str)
 {
-	int	i;
+	int		i;
+	char	*remnant;
 
 	i = 0;
 	while(str[i] != '\n' && str[i])
 		i++;
-	return (str + i + 1);
+	if(str[i] == '\n')
+		i++;
+	remnant = ft_strjoin("", str + i);
+	free(str);
+	return (remnant);
 }
 
 char	*get_next_line(int fd)
@@ -84,16 +95,12 @@ char	*get_next_line(int fd)
 
 	if(fd < 0)
 		return (NULL);
-	if(!str)
-	{
-		str = (char *)malloc(1);
-		str[0] = '\0';
-	}
 
 	aux = NULL;
-	if(!ft_strnewline(str))
-		str = ft_read_buff(fd, str, aux);
+	str = ft_read_buff(fd, str, aux);
+	if (!str)
+		return (NULL);
 	aux = ft_get_line(str);
-	str = ft_get_end_line(str);
+	str = ft_get_rest(str);
 	return (aux);
 }

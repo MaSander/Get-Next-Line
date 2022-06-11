@@ -5,7 +5,7 @@
 
 int main()
 {
-    int i = 15;
+    int i = 1;
     int line_count = 0;
     char    *result_line;
 
@@ -16,6 +16,7 @@ int main()
     {
         result_line = get_next_line(fd);
         printf("::%s", result_line);
+
     }
 
     printf("\n\t ____DONE____");
