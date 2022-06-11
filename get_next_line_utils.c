@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/11 14:07:07 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:25:44 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,16 @@ char	*ft_strnewline(const char *s)
 		++s;
 	}
 	return (NULL);
+}
+
+char	*ft_calloc(int size)
+{
+	char	*result;
+
+	result = (char *)malloc(size);
+	if (!result)
+		return (NULL);
+	while (--size >= 0)
+		result[size] = '\0';
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/11 14:15:09 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:28:52 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ char	*ft_get_line(char *str)
 	len = 0;
 	while (str[len] != '\0' && str[len] != '\n')
 		len++;
-	new_line = malloc(len + 2);
+	new_line = ft_calloc(len + 2);
 	if (str[len] == '\n')
 		new_line[len] = '\n';
-	else
-		new_line[len] = '\0';
-	new_line[len + 1] = '\0';
 	while (len--)
 		new_line[len] = str[len];
 	return (new_line);
@@ -51,10 +48,7 @@ char	*ft_read_buff(int fd, char *str, char *aux, char *buff)
 		buff[read_size] = '\0';
 		aux = str;
 		if (aux == NULL)
-		{
-			aux = malloc(1);
-			aux[0] = '\0';
-		}
+			aux = ft_calloc(1);
 		str = ft_strjoin(aux, buff);
 		free(aux);
 		if (ft_strnewline(str))
@@ -88,7 +82,7 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	aux = NULL;
-	buff = (char *)malloc(BUFFER_SIZE + 1);
+	buff = ft_calloc(BUFFER_SIZE + 1);
 	if (!buff)
 		return (NULL);
 	str = ft_read_buff(fd, str, aux, buff);

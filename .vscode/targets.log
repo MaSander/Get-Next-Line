@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 10 23:32:47 2022
+# Make data base, printed on Sat Jun 11 14:57:02 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:55780
+JOURNAL_STREAM = 8:53120
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -70,7 +70,6 @@ USERNAME = boss
 MAKELEVEL := 0
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
- 
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
@@ -78,7 +77,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 LC_CTYPE = pt_BR.UTF-8
 # environment
-MANAGERPID = 2756
+MANAGERPID = 2851
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -94,7 +93,7 @@ PATH = /home/boss/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/boss:@/tmp/.ICE-unix/3045,unix/boss:/tmp/.ICE-unix/3045
+SESSION_MANAGER = local/boss:@/tmp/.ICE-unix/3137,unix/boss:/tmp/.ICE-unix/3137
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -106,14 +105,13 @@ SNAP_VERSION = 4af164ea
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
- 
 VSCODE_LOG_STACK = false
 # environment
 DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 2f9eb01763864ded8f5fa1ed2ac45f85
+INVOCATION_ID = 1ed39dd563a94bc681197ab16c0e00f5
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/98/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -135,10 +133,9 @@ SNAP_INSTANCE_KEY =
 # environment
 PWD = /home/boss/42/github/Get-Next-Line
 # default
- 
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2958
+SSH_AGENT_PID = 3050
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -156,7 +153,7 @@ VSCODE_CODE_CACHE_PATH = /home/boss/.config/Code/CachedData/4af164ea3a06f701fe3e
 # environment
 LOGNAME = boss
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -168,7 +165,6 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 SNAP_USER_COMMON = /home/boss/snap/code/common
 # environment
- 
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
 GNOME_DESKTOP_SESSION_ID = this-is-deprecated
@@ -193,7 +189,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e9b5b0c1-4dfc-4f4e-b9aa-076edf283ff4.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e99eb7b0-5efb-4619-836d-7c910dc24a2a.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -247,18 +243,17 @@ LC_NUMERIC = pt_BR.UTF-8
 # environment
 LC_MEASUREMENT = pt_BR.UTF-8
 # environment
- 
 SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/51e30ac6_be7f_4078_b52f_b4e3a2e025e8
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/61bae919_9f69_46a4_8169_77bac6341ba4
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.1212
+GNOME_TERMINAL_SERVICE = :1.382
 # default
 SUFFIXES := 
 # environment
@@ -280,7 +275,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 21391
+VSCODE_PID = 20568
 # variable set hash-table stats:
 # Load=132/1024=13%, Rehash=0, Collisions=22/154=14%
 
@@ -297,7 +292,6 @@ VSCODE_PID = 21391
 # Implicit Rules
 
 # No implicit rules.
- 
 
 # Files
 
@@ -321,12 +315,12 @@ makefile:
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
+ 
 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -349,8 +343,7 @@ GNUmakefile:
 
 # strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
- 
 # Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
-# Finished Make data base on Fri Jun 10 23:32:47 2022
+# Finished Make data base on Sat Jun 11 14:57:02 2022
 
  
