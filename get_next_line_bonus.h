@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:54:36 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/11 18:04:03 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/11 18:22:45 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # define OPEN_MAX 1024
+
 
 char	*get_next_line(int fd);
 char	*ft_get_line(char *str);
