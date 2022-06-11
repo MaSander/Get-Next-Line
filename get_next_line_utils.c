@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/10 23:27:06 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/11 14:07:07 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*ft_strjoin(char *str1, char *str2)
 	*result = '\0';
 	return (result - len);
 }
-
 
 char	*ft_strnewline(const char *s)
 {
