@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:03:34 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/08 13:33:08 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:27:06 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlen(const char *c)
 	size_t	lengh;
 
 	lengh = 0;
-	if (!c)
-		return (0);
 	while (*c)
 	{
 		lengh++;
@@ -27,56 +25,39 @@ size_t	ft_strlen(const char *c)
 	return (lengh);
 }
 
-char	*ft_get_end_line(char *buff)
+char	*ft_strjoin(char *str1, char *str2)
 {
-	int	i;
-
-	i = 0;
-	while (buff[i])
-	{
-		if (buff[i] == '\n')
-			return (buff + i + 1);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_return_line(char *str)
-{
-	char	*new_line;
+	char	*result;
 	int		len;
 
-	len = 1;
-	while (*str == '\n')
-		str++;
-	while (str[len] && str[len] != '\n')
-		len++;
-	len++;
-	new_line = malloc(len);
-	while (len--)
-		new_line[len] = str[len];
-	return (new_line);
-}
-
-char	*ft_strdup(char *str, int size)
-{
-	char	*newstr;
-
-	newstr = malloc(size);
-	while (--size >= 0)
-		newstr[size] = str[size];
-	return (newstr);
-}
-
-int	ft_str_have_newline(char *str)
-{
-	if (!str)
-		return (0);
-	while (*str)
+	len = ft_strlen(str1) + ft_strlen(str2);
+	result = (char *)malloc(len + 1);
+	if (result == NULL)
+		return (NULL);
+	while (*str1 != '\0')
 	{
-		if (*str == '\n' || *str == '\0')
-			return (1);
-		str++;
+		*result = *str1;
+		result++;
+		str1++;
 	}
-	return (0);
+	while (*str2 != '\0')
+	{
+		*result = *str2;
+		result++;
+		str2++;
+	}
+	*result = '\0';
+	return (result - len);
+}
+
+
+char	*ft_strnewline(const char *s)
+{
+	while (*s != '\0')
+	{
+		if (*s == '\n')
+			return ((char *)s);
+		++s;
+	}
+	return (NULL);
 }
