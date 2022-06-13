@@ -6,7 +6,7 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/11 15:28:52 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:41:24 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*ft_get_rest(char *str)
 	int		i;
 	char	*remnant;
 
+	if(!str)
+		return (NULL);
 	i = 0;
 	while (str[i] != '\n' && str[i])
 		i++;
@@ -90,5 +92,11 @@ char	*get_next_line(int fd)
 		return (NULL);
 	aux = ft_get_line(str);
 	str = ft_get_rest(str);
+	if(!aux)
+	{
+		free(str);
+		free(aux);
+		return (NULL);
+	}
 	return (aux);
 }
