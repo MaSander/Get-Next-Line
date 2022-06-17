@@ -15,6 +15,10 @@ int main(void)
     printf("%s", result);
     free(result);
 
+    result = get_next_line(fd);
+    printf("%s", result);
+    free(result);
+
     close(fd);
 
     return 1;
