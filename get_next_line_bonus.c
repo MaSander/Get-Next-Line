@@ -6,11 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/17 18:48:36 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/18 21:32:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_get_line(char *str)
 {
@@ -82,7 +82,7 @@ char	*ft_get_rest(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char		*str[OPEN_MAX];
+	static char		*str[OPEN_MAX + 1];
 	char			*aux;
 	char			*buff;
 
