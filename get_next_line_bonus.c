@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 15:54:30 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/13 13:44:47 by msander-         ###   ########.fr       */
+/*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
+/*   Updated: 2022/06/18 21:32:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ char	*ft_get_rest(char *str)
 
 	if (!str)
 		return (NULL);
+	if (!ft_strnewline(str))
+	{
+		free(str);
+		return (NULL);
+	}
 	i = 0;
 	while (str[i] != '\n' && str[i])
 		i++;
@@ -77,18 +82,18 @@ char	*ft_get_rest(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char		*str[OPEN_MAX];
+	static char		*str[OPEN_MAX + 1];
 	char			*aux;
 	char			*buff;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > OPEN_MAX)
 		return (NULL);
 	aux = NULL;
 	buff = ft_calloc(BUFFER_SIZE + 1);
 	if (!buff)
 		return (NULL);
 	str[fd] = ft_read_buff(fd, str[fd], aux, buff);
-	if (!str[fd])
+	if (!str[fd] || !*str[fd])
 		return (NULL);
 	aux = ft_get_line(str[fd]);
 	str[fd] = ft_get_rest(str[fd]);

@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 15:54:36 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/13 13:45:27 by msander-         ###   ########.fr       */
+/*   Created: 2022/05/07 15:02:07 by msander-          #+#    #+#             */
+/*   Updated: 2022/06/17 18:53:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
-
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <stdlib.h>
 # define OPEN_MAX 1024

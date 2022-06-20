@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:06:50 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/13 13:45:00 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/17 18:34:45 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ char	*ft_get_rest(char *str)
 
 	if (!str)
 		return (NULL);
+	if (!ft_strnewline(str))
+	{
+		free(str);
+		return (NULL);
+	}
 	i = 0;
 	while (str[i] != '\n' && str[i])
 		i++;
@@ -88,7 +93,7 @@ char	*get_next_line(int fd)
 	if (!buff)
 		return (NULL);
 	str = ft_read_buff(fd, str, aux, buff);
-	if (!str)
+	if (!str || !*str)
 		return (NULL);
 	aux = ft_get_line(str);
 	str = ft_get_rest(str);
