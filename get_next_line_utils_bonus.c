@@ -6,11 +6,11 @@
 /*   By: msander- <msander-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:54:41 by msander-          #+#    #+#             */
-/*   Updated: 2022/06/13 13:38:38 by msander-         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:14:16 by msander-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *c)
 {
